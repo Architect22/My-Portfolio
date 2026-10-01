@@ -1,0 +1,37 @@
+/* Case study panels and shared section type. */
+.frame {
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+.frame svg,
+.frame img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+.case-title {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-size: clamp(2.2rem, 5.2vw, 5.4rem);
+}
+.big {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: .98;
+  font-size: clamp(2.4rem, 7vw, 7.5rem);
+}
+
+.btn-line {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  transition: border-color .2s, background .2s, transform .25s;
+}
+.btn-line:hover {
+  border-color: var(--accent);
+  background: var(--panel);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,17 @@
+/* Design tokens. Tailwind colors in tailwind.config.js read these. */
+:root {
+  color-scheme: dark;
+  --bg: #0c0d11;
+  --panel: #15171e;
+  --ink: #eceef4;
+  --mute: #8d92a3;
+  --line: rgba(236, 238, 244, 0.13);
+  --accent: #9db0ff;
+
+  --strip-h: 112px; /* height of the pinned project strip */
+  --p: 0;           /* overall scroll progress 0..1, set by useHorizontalScroll */
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

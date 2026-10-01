@@ -1,0 +1,40 @@
+/* The horizontal track and its panels. */
+.hscroll {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overscroll-behavior: none;
+}
+.hscroll::-webkit-scrollbar { display: none; }
+
+.panel {
+  flex: 0 0 100vw;
+  height: 100%;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding:
+    calc(84px + env(safe-area-inset-top, 0px))
+    6vw
+    calc(var(--strip-h) + env(safe-area-inset-bottom, 0px) + 28px);
+}
+.panel::-webkit-scrollbar { display: none; }
+
+/*
+  Parallax. useHorizontalScroll sets --o on every [data-panel]:
+  0 = panel is in view, 1 = one screen to the right, -1 = one screen to the left.
+  Add these classes to anything that should slide at its own speed.
+*/
+.px-a   { transform: translateX(calc(var(--o, 0) * 90px)); }
+.px-b   { transform: translateX(calc(var(--o, 0) * 200px)); }
+.px-bg  { transform: translateX(calc(var(--o, 0) * 170px)); }
+.px-img { transform: translateX(calc(var(--o, 0) * -70px)) scale(1.2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .px-a, .px-b, .px-bg { transform: none; }
+  .px-img { transform: scale(1.1); }
+}
