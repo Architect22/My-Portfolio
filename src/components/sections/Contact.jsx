@@ -3,7 +3,7 @@ import { P } from '../../constants/panels';
 
 export default function Contact({ goTo }) {
   return (
-    <section data-panel id="contact" className="panel flex flex-col justify-center">
+    <section data-panel id="contact" className="panel panel-center">
       <h2 className="big m-0 px-a">Have something in mind? Let's talk.</h2>
       <div className="mt-10 flex flex-wrap gap-4 px-b">
         <a className="cta" href={`mailto:${PROFILE.email}`}>

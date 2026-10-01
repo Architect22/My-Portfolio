@@ -18,11 +18,26 @@
   overflow-y: auto;
   scrollbar-width: none;
   padding:
-    calc(84px + env(safe-area-inset-top, 0px))
-    6vw
+    calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 28px)
+    var(--gutter)
     calc(var(--strip-h) + env(safe-area-inset-bottom, 0px) + 28px);
 }
 .panel::-webkit-scrollbar { display: none; }
+
+/*
+  Vertically center a panel's content without clipping it when it is taller
+  than the screen (justify-content:center would cut off the top on phones).
+  The two spacers share the free space and collapse to 0 when there is none.
+*/
+.panel-center { display: flex; flex-direction: column; }
+.panel-center::before,
+.panel-center::after { content: ''; flex: 1 1 0; }
+
+/* Touch devices: swipes settle on a panel. The hook turns snapping off while it animates. */
+@media (pointer: coarse) {
+  .hscroll { scroll-snap-type: x mandatory; }
+  .panel { scroll-snap-align: start; scroll-snap-stop: always; }
+}
 
 /*
   Parallax. useHorizontalScroll sets --o on every [data-panel]:
@@ -37,4 +52,12 @@
 @media (prefers-reduced-motion: reduce) {
   .px-a, .px-b, .px-bg { transform: none; }
   .px-img { transform: scale(1.1); }
+}
+
+/* Short phones: tighter vertical padding */
+@media (max-width: 767px) and (max-height: 720px) {
+  .panel {
+    padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 16px);
+    padding-bottom: calc(var(--strip-h) + env(safe-area-inset-bottom, 0px) + 16px);
+  }
 }

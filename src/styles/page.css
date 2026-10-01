@@ -1,0 +1,38 @@
+/* Dedicated project pages: a normal vertically scrolling page. */
+.page {
+  position: fixed;
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--bg);
+  -webkit-overflow-scrolling: touch;
+}
+.page-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding:
+    calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 40px)
+    var(--gutter)
+    calc(96px + env(safe-area-inset-bottom, 0px));
+}
+.page-title {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: .98;
+  font-size: clamp(2.5rem, 8vw, 6.8rem);
+}
+.next-link {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: border-color .25s, background .25s;
+}
+.next-link:hover { border-color: var(--accent); background: var(--panel); }
+@media (min-width: 768px) {
+  .next-link { grid-template-columns: 1fr 320px; padding: 32px; }
+}

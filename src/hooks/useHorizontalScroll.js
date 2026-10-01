@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { TOTAL_PANELS } from '../constants/panels';
 
+const STORAGE_KEY = 'portfolio:panel';
+
 /*
   Turns vertical wheel / trackpad scrolling into smooth horizontal travel
   across a row of full-width panels.
@@ -10,9 +12,12 @@ import { TOTAL_PANELS } from '../constants/panels';
     active       index of the panel currently centered
     goTo(i)      smooth-scroll to panel i
 
-  Side effects while scrolling:
+  While scrolling it also sets:
     --p  on <html>        overall progress 0..1
     --o  on each panel    its offset from the viewport, in screens (parallax)
+
+  The current panel is remembered in sessionStorage, so coming back from a
+  project page lands on the panel you left.
 */
 export function useHorizontalScroll() {
   const scrollerRef = useRef(null);
@@ -30,7 +35,18 @@ export function useHorizontalScroll() {
     let target = el.scrollLeft;
     let last = el.scrollLeft;
     let raf = 0;
+    let lastIdx = -1;
     const max = () => el.scrollWidth - el.clientWidth;
+
+    // restore the panel we were on
+    try {
+      const saved = Number(sessionStorage.getItem(STORAGE_KEY));
+      if (Number.isInteger(saved) && saved > 0 && saved < TOTAL_PANELS) {
+        el.scrollLeft = saved * el.clientWidth;
+        target = el.scrollLeft;
+        last = el.scrollLeft;
+      }
+    } catch { /* storage unavailable */ }
 
     const update = () => {
       const w = el.clientWidth;
@@ -38,7 +54,13 @@ export function useHorizontalScroll() {
       const m = max();
       root.style.setProperty('--p', m > 0 ? (left / m).toFixed(4) : '0');
       panels.forEach((p, i) => p.style.setProperty('--o', ((i * w - left) / w).toFixed(3)));
-      setActive(Math.round(left / w));
+
+      const idx = Math.round(left / w);
+      if (idx !== lastIdx) {
+        lastIdx = idx;
+        setActive(idx);
+        try { sessionStorage.setItem(STORAGE_KEY, String(idx)); } catch { /* ignore */ }
+      }
     };
 
     // ease scrollLeft toward `target`
@@ -48,6 +70,7 @@ export function useHorizontalScroll() {
         el.scrollLeft = target;
         last = el.scrollLeft;
         raf = 0;
+        el.style.scrollSnapType = ''; // hand control back to touch snapping
         return;
       }
       let step = diff * 0.11;
@@ -63,12 +86,17 @@ export function useHorizontalScroll() {
         el.scrollLeft = target;
         return;
       }
-      if (!raf) raf = requestAnimationFrame(tick);
+      if (!raf) {
+        el.style.scrollSnapType = 'none'; // snapping would fight the animation
+        raf = requestAnimationFrame(tick);
+      }
     };
     goRef.current = (i) => moveTo(i * el.clientWidth);
 
     const onWheel = (e) => {
       if (e.ctrlKey) return; // let pinch-zoom through
+      // sideways swipes over the project strip belong to the strip
+      if (e.target.closest?.('.strip-view') && Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
       e.preventDefault();
       const d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
       moveTo(target + d * (e.deltaMode === 1 ? 32 : 1));
@@ -115,6 +143,7 @@ export function useHorizontalScroll() {
       window.removeEventListener('resize', onResize);
       el.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(raf);
+      el.style.scrollSnapType = '';
     };
   }, []);
 

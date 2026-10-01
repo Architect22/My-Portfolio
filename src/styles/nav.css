@@ -1,20 +1,29 @@
+/* Solid, blurred top bar so it reads as separate from whatever scrolls beneath. */
 .nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 30;
+  z-index: 50;
+  box-sizing: border-box;
+  height: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  padding: env(safe-area-inset-top, 0px) max(var(--gutter), env(safe-area-inset-right, 0px)) 0 max(var(--gutter), env(safe-area-inset-left, 0px));
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: calc(18px + env(safe-area-inset-top, 0px)) 6vw 16px;
-  background: linear-gradient(to bottom, var(--bg) 40%, transparent);
+  background: rgb(var(--bg-rgb) / .86);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
 }
+.nav a,
 .nav button {
   position: relative;
   padding: 4px 0;
   color: var(--mute);
   transition: color .2s;
   font-size: 15px;
+  text-decoration: none;
 }
+.nav a:hover,
 .nav button:hover,
 .nav button[aria-current="true"] { color: var(--ink); }
 .nav button::after {
@@ -29,11 +38,45 @@
 }
 .nav button[aria-current="true"]::after { transform: scaleX(1); }
 
+.nav .menu-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink);
+}
+.nav .menu-btn::after { display: none; }
+
+/* Scroll progress sits on the bar's bottom edge. */
 .progress {
   position: fixed;
-  top: 0; left: 0;
+  top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) - 1px);
+  left: 0;
   height: 2px;
-  z-index: 40;
+  z-index: 60;
   background: var(--accent);
   width: calc(var(--p) * 100%);
 }
+
+/* Full-screen menu for small screens. */
+.nav-sheet {
+  position: fixed;
+  top: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
+  left: 0; right: 0; bottom: 0;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  padding: 20px var(--gutter) calc(28px + env(safe-area-inset-bottom, 0px));
+  background: var(--bg);
+  animation: fade .3s ease both;
+}
+.nav-sheet button {
+  padding: 14px 0;
+  text-align: left;
+  color: var(--mute);
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 9vw, 2.6rem);
+  letter-spacing: -0.03em;
+  border-bottom: 1px solid var(--line);
+}
+.nav-sheet button[aria-current="true"] { color: var(--ink); }

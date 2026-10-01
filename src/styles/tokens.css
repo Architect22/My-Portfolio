@@ -1,15 +1,18 @@
 /* Design tokens. Tailwind colors in tailwind.config.js read these. */
 :root {
   color-scheme: dark;
-  --bg: #0c0d11;
+  --bg-rgb: 12 13 17;
+  --bg: rgb(var(--bg-rgb));
   --panel: #15171e;
   --ink: #eceef4;
   --mute: #8d92a3;
   --line: rgba(236, 238, 244, 0.13);
   --accent: #9db0ff;
 
-  --strip-h: 112px; /* height of the pinned project strip */
-  --p: 0;           /* overall scroll progress 0..1, set by useHorizontalScroll */
+  --nav-h: 60px;                 /* top bar height (safe-area is added on top) */
+  --strip-h: 112px;              /* pinned project strip height */
+  --gutter: max(20px, 6vw);      /* left/right page padding */
+  --p: 0;                        /* scroll progress 0..1, set by useHorizontalScroll */
 
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);

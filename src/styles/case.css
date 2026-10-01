@@ -1,4 +1,4 @@
-/* Case study panels and shared section type. */
+/* Shared section type, frames and buttons. */
 .frame {
   border-radius: 22px;
   overflow: hidden;
@@ -7,6 +7,8 @@
 }
 .frame svg,
 .frame img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.frame-link { display: block; transition: border-color .25s, box-shadow .25s; }
+.frame-link:hover { border-color: var(--accent); box-shadow: 0 20px 50px -24px var(--accent); }
 
 .case-title {
   font-family: 'Bricolage Grotesque', system-ui, sans-serif;
@@ -15,6 +17,7 @@
   line-height: 1;
   font-size: clamp(2.2rem, 5.2vw, 5.4rem);
 }
+/* short headings */
 .big {
   font-family: 'Bricolage Grotesque', system-ui, sans-serif;
   font-weight: 700;
@@ -22,16 +25,34 @@
   line-height: .98;
   font-size: clamp(2.4rem, 7vw, 7.5rem);
 }
+/* sentence-length statements */
+.statement {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-size: clamp(1.75rem, 3.7vw, 3.8rem);
+}
 
 .btn-line {
   display: inline-block;
   padding: 12px 24px;
   border-radius: 12px;
   border: 1px solid var(--line);
+  text-decoration: none;
   transition: border-color .2s, background .2s, transform .25s;
 }
 .btn-line:hover {
   border-color: var(--accent);
   background: var(--panel);
   transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .big { font-size: clamp(2.1rem, 11vw, 3.6rem); }
+}
+
+/* Short phones: drop the secondary details so the button stays reachable (they live on the project page). */
+@media (max-width: 767px) and (max-height: 720px) {
+  .case-meta { display: none !important; } /* beats Tailwind's grid utility */
 }

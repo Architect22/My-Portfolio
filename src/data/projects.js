@@ -1,11 +1,22 @@
 /*
-  CONTENT: edit this file to change what shows up in the strip,
-  the hero background, and the case study panels.
+  CONTENT: edit this file to change what shows up in the strip, the hero
+  background, the case study panels on the home page, and each project's
+  own page at /projects/<id>.
 
-  To use real screenshots instead of the generated placeholder art,
-  add an `image` field (e.g. image: '/projects/featherborn.jpg', with the
-  file in /public/projects/). <ProjectImage/> uses it when present.
+  To use real screenshots instead of the generated placeholder art, add
+  `image: '/projects/name.jpg'` (file in /public/projects/).
+  Set `liveUrl` to show a "View live project" button on the project page.
 */
+const PLACEHOLDER_DETAILS = {
+  challenge: 'Describe the problem or goal this project started from, and who it was for.',
+  approach: [
+    { title: 'Research', body: 'What you looked into before building: users, constraints, existing solutions.' },
+    { title: 'Design', body: 'Key decisions, sketches or prototypes, and why you made them.' },
+    { title: 'Build', body: 'How you built it, the tools you used, and the hardest problem you solved.' },
+  ],
+  outcome: 'Say what happened: numbers, feedback, what shipped, what you would do differently.',
+};
+
 export const PROJECTS = [
   {
     id: 'featherborn',
@@ -17,7 +28,8 @@ export const PROJECTS = [
     tools: 'Unity, C#',
     summary: 'A commercial game with a public demo on Steam.',
     result: 'Add launch numbers, player feedback, or what shipping it taught you.',
-    href: '#',
+    liveUrl: '',
+    ...PLACEHOLDER_DETAILS,
   },
   {
     id: 'project-2',
@@ -29,7 +41,8 @@ export const PROJECTS = [
     tools: 'React, TypeScript, Tailwind',
     summary: 'One or two sentences on the problem this solved and who it was for.',
     result: 'What changed because of it: a number, a quote, a shipped feature.',
-    href: '#',
+    liveUrl: '',
+    ...PLACEHOLDER_DETAILS,
   },
   {
     id: 'project-3',
@@ -41,7 +54,8 @@ export const PROJECTS = [
     tools: 'Figma, user testing',
     summary: 'One or two sentences on the problem this solved and who it was for.',
     result: 'What changed because of it: a number, a quote, a shipped feature.',
-    href: '#',
+    liveUrl: '',
+    ...PLACEHOLDER_DETAILS,
   },
   {
     id: 'project-4',
@@ -53,6 +67,7 @@ export const PROJECTS = [
     tools: 'Unity, C#',
     summary: 'One or two sentences on the problem this solved and who it was for.',
     result: 'What changed because of it: a number, a quote, a shipped feature.',
-    href: '#',
+    liveUrl: '',
+    ...PLACEHOLDER_DETAILS,
   },
 ];

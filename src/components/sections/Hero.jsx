@@ -6,7 +6,7 @@ import ProjectImage from '../ProjectImage';
 
 function RingIcon() {
   return (
-    <svg className="ring" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+    <svg className="ring-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
       <circle cx="50" cy="50" r="47" />
       <circle cx="50" cy="50" r="35" />
       <circle cx="50" cy="50" r="23" />
@@ -96,10 +96,11 @@ export default function Hero({ goTo }) {
         className="relative flex flex-wrap items-end justify-between gap-x-10 gap-y-6 enter"
         style={{ '--d': '1s' }}
       >
-        <p className="m-0 max-w-[34ch] text-[17px] leading-relaxed text-ink">{PROFILE.intro}</p>
+        <p className="m-0 basis-full md:basis-auto max-w-[34ch] text-[17px] leading-relaxed text-ink">{PROFILE.intro}</p>
 
         <div className="flex items-center gap-2 text-mute text-[15px]" aria-hidden="true">
-          Scroll
+          <span className="hint-mouse">Scroll</span>
+          <span className="hint-touch">Swipe</span>
           <svg className="nudge" width="34" height="14" viewBox="0 0 34 14" fill="none" stroke="currentColor" strokeWidth="1.5">
             <path d="M0 7h32M26 1l6 6-6 6" />
           </svg>
