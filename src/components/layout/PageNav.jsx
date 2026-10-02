@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function PageNav() {
   return (
     <nav className="nav" aria-label="Site">
-      <Link to="/">Benjamin</Link>
+      <Link to="/">Home</Link>
       <Link to="/">← All case studies</Link>
     </nav>
   );
