@@ -2,13 +2,17 @@ import { useEffect, useRef } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { PROJECTS } from '../data/projects';
 import PageNav from '../components/layout/PageNav';
-import ProjectImage from '../components/ProjectImage';
-import Section from '../components/project/Section';
+import Pic from '../components/project/Pic';
+import Reveal from '../components/project/Reveal';
+import ProjectHeader from '../components/project/ProjectHeader';
+import ProjectMeta from '../components/project/ProjectMeta';
+import BlockRenderer from '../components/project/BlockRenderer';
 import NextProject from '../components/project/NextProject';
 
 /*
   Detailed case study at /projects/:id.
-  This is a scaffold: the layout is in place, the design is next.
+  Header and cover come from the project in data/projects.js;
+  everything below is the project's `page.blocks` (see data/pages/).
 */
 export default function ProjectPage() {
   const { id } = useParams();
@@ -25,16 +29,21 @@ export default function ProjectPage() {
     if (!project) return undefined;
     const previous = document.title;
     document.title = `${project.title} | Benjamin`;
-    return () => { document.title = previous; };
+    return () => {
+      document.title = previous;
+    };
   }, [project]);
 
   if (!project) return <Navigate to="/" replace />;
 
+  const page = project.page ?? {};
   const next = PROJECTS[(index + 1) % PROJECTS.length];
+  const cover = page.cover ?? project.image;
   const meta = [
-    ['Role', project.role],
-    ['Tools', project.tools],
-    ['Type', project.kind],
+    { label: 'Role', value: project.role },
+    { label: 'Tools', value: project.tools },
+    { label: 'Type', value: project.kind },
+    ...(page.meta ?? []),
   ];
 
   return (
@@ -42,50 +51,21 @@ export default function ProjectPage() {
       <PageNav />
 
       <main className="page-main">
-        <header>
-          <p className="m-0 mb-4 text-mute text-[15px]">{project.kind}</p>
-          <h1 className="page-title m-0">{project.title}</h1>
-          <p className="mt-6 mb-0 max-w-[48ch] text-[19px] leading-relaxed">{project.summary}</p>
-        </header>
+        <ProjectHeader project={project} />
 
-        <dl className="m-0 mt-10 grid gap-x-8 gap-y-4 sm:grid-cols-3">
-          {meta.map(([label, value]) => (
-            <div key={label} className="border-t border-line pt-3">
-              <dt className="mb-1 text-sm text-mute">{label}</dt>
-              <dd className="m-0 text-[16px] leading-snug">{value}</dd>
-            </div>
-          ))}
-        </dl>
+        {cover && (
+          <Reveal className="mt-12">
+            <Pic src={cover} alt={`${project.title} cover`} eager />
+          </Reveal>
+        )}
 
-        <div className="frame mt-12 aspect-[16/10]">
-          <ProjectImage project={project} />
-        </div>
+        <Reveal className="mt-12">
+          <ProjectMeta items={meta} />
+        </Reveal>
 
-        <Section title="The challenge">
-          <p className="m-0">{project.challenge}</p>
-        </Section>
+        <BlockRenderer blocks={page.blocks} />
 
-        <Section title="How I approached it">
-          <div className="grid gap-7">
-            {project.approach.map((step) => (
-              <div key={step.title}>
-                <h3 className="m-0 mb-1 font-display text-lg font-semibold">{step.title}</h3>
-                <p className="m-0 text-mute">{step.body}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section title="The outcome">
-          <p className="m-0">{project.outcome}</p>
-          {project.liveUrl && (
-            <a className="btn-line mt-6" href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              View live project
-            </a>
-          )}
-        </Section>
-
-        <div className="mt-20">
+        <div className="mt-28">
           <NextProject project={next} />
           <Link className="btn-line mt-8" to="/">
             Back to case studies
