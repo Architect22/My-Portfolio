@@ -15,16 +15,18 @@ function RingIcon() {
   );
 }
 
-/* Profile picture placeholder: swap the inner div for an <img>. */
-function Avatar({ size, text }) {
+function Avatar({ size }) {
   return (
     <div
       className="avatar rounded-full p-[3px]"
       style={{ width: size, height: size, background: 'linear-gradient(135deg, var(--accent), #e7c27a)' }}
     >
-      <div className={`w-full h-full rounded-full bg-panel flex items-center justify-center font-display font-bold ${text}`}>
-        B
-      </div>
+      <img
+        className="h-full w-full rounded-full object-cover"
+        src="/images/portfolio%20picture.jpg"
+        alt="Benjamin"
+        style={{ objectPosition: 'center 34%' }}
+      />
     </div>
   );
 }
@@ -83,12 +85,12 @@ export default function Hero({ goTo }) {
             className="avatar-wrap hidden md:block absolute"
             style={{ left: '100%', marginLeft: '1.4vw', top: '64%' }}
           >
-            <Avatar size={88} text="text-2xl" />
+            <Avatar size={88} />
           </div>
         </div>
 
         <div className="md:hidden mt-8 avatar-wrap w-fit">
-          <Avatar size={72} text="text-xl" />
+          <Avatar size={72} />
         </div>
       </div>
 

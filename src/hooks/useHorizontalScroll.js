@@ -23,6 +23,8 @@ export function useHorizontalScroll() {
   const scrollerRef = useRef(null);
   const goRef = useRef(() => {});
   const [active, setActive] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState(null);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     const el = scrollerRef.current;
@@ -34,7 +36,9 @@ export function useHorizontalScroll() {
 
     let target = el.scrollLeft;
     let last = el.scrollLeft;
+    let lastObserved = el.scrollLeft;
     let raf = 0;
+    let directionTimer = 0;
     let lastIdx = -1;
     const max = () => el.scrollWidth - el.clientWidth;
 
@@ -45,6 +49,7 @@ export function useHorizontalScroll() {
         el.scrollLeft = saved * el.clientWidth;
         target = el.scrollLeft;
         last = el.scrollLeft;
+        lastObserved = el.scrollLeft;
       }
     } catch { /* storage unavailable */ }
 
@@ -105,6 +110,14 @@ export function useHorizontalScroll() {
     // touch drags, scrollbar, focus jumps: keep our target in sync
     const onScroll = () => {
       if (!raf && Math.abs(el.scrollLeft - last) > 1) target = el.scrollLeft;
+      const delta = el.scrollLeft - lastObserved;
+      lastObserved = el.scrollLeft;
+      if (Math.abs(delta) > 0.5) {
+        setScrollDirection(delta > 0 ? 'right' : 'left');
+        setIsScrolling(true);
+        window.clearTimeout(directionTimer);
+        directionTimer = window.setTimeout(() => setIsScrolling(false), 160);
+      }
       last = el.scrollLeft;
       update();
     };
@@ -143,11 +156,12 @@ export function useHorizontalScroll() {
       window.removeEventListener('resize', onResize);
       el.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(raf);
+      window.clearTimeout(directionTimer);
       el.style.scrollSnapType = '';
     };
   }, []);
 
   const goTo = useCallback((i) => goRef.current(i), []);
 
-  return { scrollerRef, active, goTo };
+  return { scrollerRef, active, goTo, scrollDirection, isScrolling };
 }

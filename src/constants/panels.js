@@ -9,8 +9,7 @@ export const P = {
   about: 1,
   cases: 2,
   first: 3, // first project case study
-  cv: 3 + PROJECTS.length,
-  contact: 4 + PROJECTS.length,
+  contact: 3 + PROJECTS.length,
 };
 
 export const TOTAL_PANELS = P.contact + 1;

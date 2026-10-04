@@ -1,6 +1,7 @@
 /* The horizontal track and its panels. */
 .hscroll {
   position: fixed;
+  z-index: 1;
   inset: 0;
   display: flex;
   overflow-x: auto;
@@ -9,6 +10,16 @@
   overscroll-behavior: none;
 }
 .hscroll::-webkit-scrollbar { display: none; }
+
+.walk-animation {
+  position: fixed;
+  z-index: 0;
+  right: 0;
+  bottom: calc(var(--strip-h) - 45px + env(safe-area-inset-bottom, 0px));
+  width: clamp(96px, 13vw, 180px);
+  height: auto;
+  pointer-events: none;
+}
 
 .panel {
   flex: 0 0 100vw;
