@@ -1,5 +1,25 @@
 import { Fragment } from 'react';
 
+function renderInlineText(text) {
+  const parts = [];
+  const linkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  let start = 0;
+  let match;
+
+  while ((match = linkPattern.exec(text))) {
+    if (match.index > start) parts.push(text.slice(start, match.index));
+    parts.push(
+      <a key={match.index} href={match[2]} target="_blank" rel="noopener noreferrer">
+        {match[1]}
+      </a>,
+    );
+    start = linkPattern.lastIndex;
+  }
+
+  if (start < text.length) parts.push(text.slice(start));
+  return parts;
+}
+
 /*
   Turns plain text into paragraphs and lists.
 
@@ -7,6 +27,7 @@ import { Fragment } from 'react';
     line break          kept as a line break inside the paragraph
     "- item" / "* item" bullet list
     "1. item"           numbered list
+    "[title](https://example.com)"  titled hyperlink
 
   `source` can be one string (template literal) or an array of strings;
   each array item starts a new paragraph.
@@ -46,7 +67,7 @@ export default function RichText({ source }) {
       return (
         <List key={i}>
           {block.lines.map((line, j) => (
-            <li key={j}>{line}</li>
+            <li key={j}>{renderInlineText(line)}</li>
           ))}
         </List>
       );
@@ -56,7 +77,7 @@ export default function RichText({ source }) {
         {block.lines.map((line, j) => (
           <Fragment key={j}>
             {j > 0 && <br />}
-            {line}
+            {renderInlineText(line)}
           </Fragment>
         ))}
       </p>

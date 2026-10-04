@@ -1,38 +1,65 @@
 /*
   Project page content for "stomper".
-  Everything on the page below the header is the `blocks` list, rendered in order.
-  See src/data/pages/_template.js for every block type and its options.
-  Replace the [bracketed] text with your own.
+  See src/data/pages/_template.js for the available block types.
 */
 export default {
-  tagline: 'A small arcade game shipped to Scirra Arcade and Itch.io.',
-  tags: ['Game', 'Construct 3', 'Scirra Arcade', 'Itch.io'],
-
-  // Extra rows next to Role / Tools / Type, e.g.
-  // meta: [{ label: 'Team', value: '...' }, { label: 'Year', value: '2025' }],
+  tagline: 'A compact platform game built around one satisfying move: stomping enemies.',
+  tags: ['Game development', 'Construct 3', 'Pixel art'],
   meta: [],
-
-  // Cover image under the title. Defaults to the project's `image`.
-  // cover: '/images/Folder/name.png',
 
   blocks: [
     {
       type: 'text',
-      title: 'What was the problem?',
-      body: ['[Describe the problem or goal this project started from, and who it was for.]'],
+      title: 'The challenge',
+      body: [
+        'Stomper is a solo-developed arcade platformer released on Scirra Arcade and Itch.io. Its central action is immediately legible: jump onto enemies to defeat them.',
+        'The level design needed to make that action work in motion, giving players a reason to time jumps while navigating platforms, hazards, and collectibles.',
+      ],
     },
-    // { type: 'image', src: '/images/Folder/name2.png', alt: 'What this shows', caption: 'Optional caption' },
     {
       type: 'text',
-      title: 'How it came together',
-      body: ['[Walk through the key decisions, the tools you used, and the hardest problem you solved.]'],
+      title: 'Making the core action readable',
+      body: [
+        'I built the game in Construct 3 and created its pixel-art presentation in Aseprite. The controls and environment are kept visually clear so players can read platforms, enemies, and hazards while moving through each space.',
+        'The screenshots show different moments in that loop: enemies and gems in the dungeon, a more demanding obstacle layout, and an in-game instruction that teaches the key action and restart control.',
+      ],
     },
-    // { type: 'images', layout: 'row', items: [{ src: '/images/Folder/a.png' }, { src: '/images/Folder/b.png' }] },
+    {
+      type: 'image',
+      src: '/images/Stomper/stomper1.png',
+      alt: 'Pixel-art dungeon gameplay with the player, an enemy, and collectibles',
+      pixelated: true,
+      caption: 'A level combines readable platforms, enemies, and collectibles in a compact dungeon space.',
+    },
+    {
+      type: 'text',
+      title: 'Teach the move, then test it',
+      body: [
+        'The game builds around one simple rule: land on enemies to defeat them. A short instruction in the level introduces the mechanic and restart control, while later layouts ask players to apply it around tighter spaces and hazards.',
+      ],
+    },
+    {
+      type: 'images',
+      layout: 'row',
+      items: [
+        { src: '/images/Stomper/stomper2.png', alt: 'Platforming challenge with hazards, gems, and an enemy being stomped', pixelated: true },
+        { src: '/images/Stomper/stomper3.png', alt: 'Gameplay instruction explaining that stomping defeats enemies and R restarts the level', pixelated: true },
+      ],
+      caption: 'A more demanding obstacle room and the in-game instruction that introduces the core action.',
+    },
+    {
+      type: 'text',
+      title: 'Outcome',
+      body: [
+        'Stomper shipped as a playable game on Scirra Arcade and Itch.io, where it reached more than 650 players on Scirra Arcade.',
+      ],
+    },
     {
       type: 'stats',
       title: 'Results',
       items: [
         { value: '650+', label: 'Players on Scirra Arcade' },
+        { value: '2', label: 'Platforms: Scirra Arcade and Itch.io' },
       ],
     },
   ],

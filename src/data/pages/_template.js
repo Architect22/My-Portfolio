@@ -21,6 +21,7 @@ export default {
     //   - a blank line starts a new paragraph
     //   - a single line break stays a line break
     //   - lines starting with "- " become bullets, "1. " become a numbered list
+    //   - [link title](https://example.com) becomes a titled hyperlink
     {
       type: 'text',
       title: 'What was the problem?',

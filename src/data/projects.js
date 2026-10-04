@@ -97,14 +97,14 @@ export const PROJECTS = [
       'A project for a local non-profit organization aimed at sending aid to first-year mothers in need. The website was created to help them centralize their information and make it easier for people to get help or donate to their cause.',
     result:
       'A working full stack web app that is still in live-service use by the non-profit. The website has helped over 230 mothers and helped raise over $7,000 in donations.',
-    liveUrl: '',
+    liveUrl: 'https://www.giftsofhopeiowa.org/home',
     page: giftsOfHope,
   },
   {
     id: 'bug-gladiator',
     title: 'Bug Gladiator',
     kind: 'Product Design',
-    image: '/images/Bug_Gladiator/gladiator1.png',
+    image: '/images/Bug_Gladiator/gladiator4.png',
     role: 'Sole Designer and Developer',
     tools: 'Dextrous, Photopea',
     summary:
