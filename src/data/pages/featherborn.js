@@ -6,11 +6,14 @@
 */
 export default {
   tagline: 'From startup studio to Steam demo and Kickstarter.',
-  tags: ['Game', 'Unity', 'Steam demo'],
+  tags: ['Founder', 'Game', 'Unity', 'Steam demo'],
 
   // Extra rows next to Role / Tools / Type, e.g.
   // meta: [{ label: 'Team', value: '...' }, { label: 'Year', value: '2025' }],
-  meta: [],
+  meta: [
+    { label: 'Team', value: `Sound Designers Cutscene Animators Environment Artists Marketing Specialists` },
+    { label: 'Year', value: '2025' },
+  ],
 
   // Cover image under the title. Defaults to the project's `image`.
   // cover: '/images/Folder/name.png',

@@ -9,7 +9,7 @@ export default function NextProject({ project }) {
         <span className="case-title block">{project.title}</span>
         <span className="mt-2 block text-mute text-[15px]">{project.kind}</span>
       </div>
-      <div className="frame aspect-[4/3]">
+      <div className="fit-frame justify-self-start md:justify-self-end" style={{ '--fit-h': '260px' }}>
         <ProjectImage project={project} />
       </div>
     </Link>

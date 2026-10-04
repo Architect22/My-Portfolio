@@ -47,11 +47,9 @@
 .px-a   { transform: translateX(calc(var(--o, 0) * 90px)); }
 .px-b   { transform: translateX(calc(var(--o, 0) * 200px)); }
 .px-bg  { transform: translateX(calc(var(--o, 0) * 170px)); }
-.px-img { transform: translateX(calc(var(--o, 0) * -70px)) scale(1.2); }
 
 @media (prefers-reduced-motion: reduce) {
   .px-a, .px-b, .px-bg { transform: none; }
-  .px-img { transform: scale(1.1); }
 }
 
 /* Short phones: tighter vertical padding */

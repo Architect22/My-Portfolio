@@ -16,13 +16,27 @@ export default {
   links: [{ label: 'Itch.io page', href: 'https://example.com' }], // extra buttons, optional
 
   blocks: [
-    // Heading on the left, paragraphs (and optional bullets) on the right.
+    // Heading on the left, text on the right.
+    // `body` is a string or a list of strings. Inside the text:
+    //   - a blank line starts a new paragraph
+    //   - a single line break stays a line break
+    //   - lines starting with "- " become bullets, "1. " become a numbered list
     {
       type: 'text',
       title: 'What was the problem?',
-      body: ['First paragraph.', 'Second paragraph.'],
-      bullets: ['Optional bullet', 'Another bullet'],
+      body: `First paragraph.
+This line sits right under it (a line break).
+
+A new paragraph, followed by a list:
+- First bullet
+- Second bullet
+
+1. Numbered step
+2. Another step`,
     },
+
+    // The same thing as a list of strings (each item is its own paragraph):
+    // { type: 'text', title: 'Another way', body: ['First paragraph.', 'Second paragraph.', '- A bullet\n- Another bullet'] },
 
     // One image. width: 'full' (default) | 'narrow'.
     // natural: true  -> never stretch past the file's own size (good for small images)

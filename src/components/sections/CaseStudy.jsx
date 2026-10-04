@@ -3,7 +3,7 @@ import ProjectImage from '../ProjectImage';
 
 export default function CaseStudy({ project }) {
   const to = `/projects/${project.id}`;
-  // Outcome is left for the project page on phones, where space is tight
+  // The outcome row is dropped on short screens (see case.css); the project page has it all
   const rows = [
     ['Role', project.role, false],
     ['Tools', project.tools, false],
@@ -16,13 +16,13 @@ export default function CaseStudy({ project }) {
         <div className="px-a order-2 lg:order-1">
           <p className="m-0 mb-3 text-mute text-[15px]">{project.kind}</p>
           <h2 className="case-title m-0">{project.title}</h2>
-          <p className="mt-4 mb-6 max-w-[44ch] text-[17px] leading-relaxed">{project.summary}</p>
+          <p className="case-summary mt-4 mb-6 max-w-[44ch] text-[17px] leading-relaxed">{project.summary}</p>
 
           <dl className="case-meta m-0 grid gap-3 max-w-[46ch]">
             {rows.map(([label, value, phoneHidden]) => (
               <div
                 key={label}
-                className={`${phoneHidden ? 'hidden sm:grid' : 'grid'} grid-cols-[72px_1fr] sm:grid-cols-[84px_1fr] gap-3 border-t border-line pt-3 text-[15px]`}
+                className={`${phoneHidden ? 'case-outcome' : ''} grid grid-cols-[72px_1fr] sm:grid-cols-[84px_1fr] gap-3 border-t border-line pt-3 text-[15px]`}
               >
                 <dt className="text-mute">{label}</dt>
                 <dd className="m-0">{value}</dd>
@@ -35,13 +35,11 @@ export default function CaseStudy({ project }) {
           </Link>
         </div>
 
-        <Link
-          to={to}
-          className="frame frame-link order-1 lg:order-2 aspect-[4/3] max-h-[26vh] lg:max-h-[62vh] w-full justify-self-center"
-          aria-label={`Go to project: ${project.title}`}
-        >
-          <ProjectImage project={project} className="px-img" />
-        </Link>
+        <div className="case-media px-b order-1 lg:order-2">
+          <Link to={to} className="fit-frame fit-link" aria-label={`Go to project: ${project.title}`}>
+            <ProjectImage project={project} />
+          </Link>
+        </div>
       </div>
     </section>
   );

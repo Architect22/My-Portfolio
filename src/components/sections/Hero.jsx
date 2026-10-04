@@ -15,17 +15,16 @@ function RingIcon() {
   );
 }
 
-function Avatar({ size }) {
+/* Profile picture placeholder: swap the inner div for an <img>. */
+function Avatar({ size, text }) {
   return (
     <div
       className="avatar rounded-full p-[3px]"
       style={{ width: size, height: size, background: 'linear-gradient(135deg, var(--accent), #e7c27a)' }}
     >
-      <img
-        src="/images/portfolio picture.jpg"
-        alt="Benjamin"
-        className="block w-full h-full rounded-full object-cover"
-      />
+      <div className={`w-full h-full rounded-full bg-panel flex items-center justify-center font-display font-bold ${text}`}>
+        B
+      </div>
     </div>
   );
 }
@@ -41,7 +40,7 @@ function BackdropTiles() {
       {[0, 1, 2, 3, 4].map((col) => (
         <div key={col} className="flex flex-col gap-5" style={{ transform: `translateY(${col % 2 ? '-8vh' : '6vh'})` }}>
           {[0, 1].map((row) => (
-            <div key={row} className="frame aspect-[4/3]">
+            <div key={row} className="fit-frame fit-frame--fill">
               <ProjectImage project={pool[(col * 2 + row) % pool.length]} />
             </div>
           ))}
@@ -84,12 +83,12 @@ export default function Hero({ goTo }) {
             className="avatar-wrap hidden md:block absolute"
             style={{ left: '100%', marginLeft: '1.4vw', top: '64%' }}
           >
-            <Avatar size={88} />
+            <Avatar size={88} text="text-2xl" />
           </div>
         </div>
 
         <div className="md:hidden mt-8 avatar-wrap w-fit">
-          <Avatar size={72} />
+          <Avatar size={72} text="text-xl" />
         </div>
       </div>
 
