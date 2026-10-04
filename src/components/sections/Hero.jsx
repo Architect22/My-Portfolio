@@ -92,14 +92,16 @@ export default function Hero({ goTo }) {
         <div className="md:hidden mt-8 avatar-wrap w-fit">
           <Avatar size={72} />
         </div>
+
+        <div className="mt-8 max-w-[34ch] enter" style={{ '--d': '1s' }}>
+          <p className="m-0 text-[17px] leading-relaxed text-ink">{PROFILE.intro}</p>
+          <button className="cta mt-6" onClick={() => goTo(P.contact)}>
+            Contact
+          </button>
+        </div>
       </div>
 
-      <div
-        className="relative flex flex-wrap items-end justify-between gap-x-10 gap-y-6 enter"
-        style={{ '--d': '1s' }}
-      >
-        <p className="m-0 basis-full md:basis-auto max-w-[34ch] text-[17px] leading-relaxed text-ink">{PROFILE.intro}</p>
-
+      <div className="relative flex justify-end">
         <div className="flex items-center gap-2 text-mute text-[15px]" aria-hidden="true">
           <span className="hint-mouse">Scroll</span>
           <span className="hint-touch">Swipe</span>
@@ -107,10 +109,6 @@ export default function Hero({ goTo }) {
             <path d="M0 7h32M26 1l6 6-6 6" />
           </svg>
         </div>
-
-        <button className="cta" onClick={() => goTo(P.contact)}>
-          Contact
-        </button>
       </div>
     </section>
   );

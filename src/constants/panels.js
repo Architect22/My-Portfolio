@@ -7,9 +7,8 @@ import { PROJECTS } from '../data/projects';
 export const P = {
   home: 0,
   about: 1,
-  cases: 2,
-  first: 3, // first project case study
-  contact: 3 + PROJECTS.length,
+  first: 2, // first project case study
+  contact: 2 + PROJECTS.length,
 };
 
 export const TOTAL_PANELS = P.contact + 1;

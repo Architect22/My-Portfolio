@@ -7,7 +7,7 @@ export default function Nav({ active, goTo }) {
 
   const links = [
     ['About', P.about, active === P.about],
-    ['Case studies', P.cases, active >= P.cases],
+    ['Case studies', P.first, active >= P.first],
     ['Contact', P.contact, active === P.contact],
   ];
 
