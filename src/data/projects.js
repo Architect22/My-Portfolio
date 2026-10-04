@@ -35,7 +35,7 @@ export const PROJECTS = [
     id: 'the-lost-dungeon',
     title: 'The Lost Dungeon',
     kind: 'Game',
-    image: '/images/Dungeon/dungeon1.webp',
+    image: '/images/Dungeon/lost_dungeon_boss.png',
     role: 'Solo Developer',
     tools: 'Construct 3, Aseprite, Audacity',
     summary:
@@ -49,7 +49,7 @@ export const PROJECTS = [
     id: 'stomper',
     title: 'Stomper',
     kind: 'Game',
-    image: '/images/Stomper/stomper1.webp',
+    image: '/images/Stomper/stomper1.png',
     role: 'Solo Developer',
     tools: 'Construct 3, Aseprite',
     summary: 'A personal game project shipped to Scirra Arcade and Itch.io.',
@@ -62,7 +62,7 @@ export const PROJECTS = [
     id: 'multiplayer-game',
     title: 'Multiplayer Class Project',
     kind: 'Game',
-    image: '/images/Multiplayer/multiplayer1.png',
+    image: '/images/Multiplayer/multiplayer3.png',
     role: 'Frontend Developer',
     tools: 'LibGDX, Java, Android Studio, Tiled, MySQL, GitLab',
     summary:

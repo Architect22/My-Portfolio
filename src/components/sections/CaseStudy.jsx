@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import ProjectImage from '../ProjectImage';
+import FitFrame from '../FitFrame';
 
 export default function CaseStudy({ project }) {
   const to = `/projects/${project.id}`;
@@ -12,7 +12,7 @@ export default function CaseStudy({ project }) {
 
   return (
     <section data-panel id={project.id} className="panel panel-center">
-      <div className="w-full grid gap-6 lg:gap-14 lg:grid-cols-[5fr_6fr] items-center">
+      <div className="w-full grid gap-6 lg:gap-10 lg:grid-cols-[4fr_7fr] items-center">
         <div className="px-a order-2 lg:order-1">
           <p className="m-0 mb-3 text-mute text-[15px]">{project.kind}</p>
           <h2 className="case-title m-0">{project.title}</h2>
@@ -36,9 +36,7 @@ export default function CaseStudy({ project }) {
         </div>
 
         <div className="case-media px-b order-1 lg:order-2">
-          <Link to={to} className="fit-frame fit-link" aria-label={`Go to project: ${project.title}`}>
-            <ProjectImage project={project} />
-          </Link>
+          <FitFrame as={Link} to={to} project={project} className="fit-link" aria-label={`Go to project: ${project.title}`} />
         </div>
       </div>
     </section>

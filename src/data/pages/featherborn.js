@@ -21,15 +21,18 @@ export default {
   blocks: [
     {
       type: 'text',
-      title: 'What was the problem?',
-      body: ['[Describe the problem or goal this project started from, and who it was for.]'],
+      title: 'Goal of the Project',
+      body: ['The goal of Featherborn was to create a commercial game that could be pitched to publishers and potentially funded through Kickstarter. The project aimed to showcase the capabilities of my startup studio, Boku Studios, and to generate interest in a full game release.'],
     },
     // { type: 'image', src: '/images/Folder/name2.png', alt: 'What this shows', caption: 'Optional caption' },
     {
       type: 'text',
       title: 'How it came together',
-      body: ['[Walk through the key decisions, the tools you used, and the hardest problem you solved.]'],
+      body: [`The game was built with Unity and C#, with all the environment and character art created by the team.
+        
+        The development process involved close collaboration with sound designers, cutscene animators, and marketing specialists to ensure a polished final product. The team worked diligently to create a compelling demo that would attract attention from both players and potential investors.`],
     },
+    // {type: 'gallery', title: 'Game Screenshots', items: []},
     // { type: 'images', layout: 'row', items: [{ src: '/images/Folder/a.png' }, { src: '/images/Folder/b.png' }] },
     {
       type: 'stats',

@@ -15,7 +15,7 @@
   --p: 0;                        /* scroll progress 0..1, set by useHorizontalScroll */
 
   /* vertical room inside a home panel, between the top bar and the project strip */
-  --panel-avail: calc(100vh - var(--nav-h) - var(--strip-h) - 64px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  --panel-avail: calc(100vh - var(--nav-h) - var(--strip-h) - 56px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
 
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -24,6 +24,6 @@
 
 @supports (height: 100dvh) {
   :root {
-    --panel-avail: calc(100dvh - var(--nav-h) - var(--strip-h) - 64px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    --panel-avail: calc(100dvh - var(--nav-h) - var(--strip-h) - 56px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
   }
 }
