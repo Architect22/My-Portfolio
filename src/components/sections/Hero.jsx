@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { PROJECTS } from '../../data/projects';
 import { PROFILE } from '../../data/profile';
 import { P } from '../../constants/panels';
+import { assetUrl } from '../../utils/assetUrl';
 import ProjectImage from '../ProjectImage';
 
 function RingIcon() {
@@ -23,7 +24,7 @@ function Avatar({ size }) {
     >
       <img
         className="h-full w-full rounded-full object-cover"
-        src="/images/portfolio%20picture.jpg"
+        src={assetUrl('/images/portfolio%20picture.jpg')}
         alt="Benjamin"
         style={{ objectPosition: 'center 34%' }}
       />

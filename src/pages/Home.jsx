@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { PROJECTS } from '../data/projects';
 import { useHorizontalScroll } from '../hooks/useHorizontalScroll';
+import { assetUrl } from '../utils/assetUrl';
 
 import Nav from '../components/layout/Nav';
 import ProgressBar from '../components/layout/ProgressBar';
@@ -36,7 +37,7 @@ function WalkAnimation({ direction, isScrolling }) {
       ref={videoRef}
       className="walk-animation"
       key={direction}
-      src={`/videos/walk_${direction}.mp4`}
+      src={assetUrl(`/videos/walk_${direction}.mp4`)}
       muted
       loop
       playsInline

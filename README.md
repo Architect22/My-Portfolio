@@ -75,7 +75,7 @@ The site uses real URLs (`/projects/featherborn`), so the host must serve `index
 
 - **Netlify:** works as is (`public/_redirects`).
 - **Vercel:** add a `vercel.json` with `{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }`.
-- **GitHub Pages:** the Actions workflow builds the site, publishes `dist/`, and copies the built `index.html` to `404.html` so project URLs work when opened directly. The router uses Vite's base path for the `/My-Portfolio/` repository site.
+- **GitHub Pages:** the Actions workflow builds the site, publishes `dist/`, and copies the built `index.html` to `404.html` so project URLs work when opened directly. The router and static asset URLs use Vite's base path for the `/My-Portfolio/` repository site.
 
 ## Gotcha
 

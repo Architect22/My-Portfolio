@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { assetUrl } from '../utils/assetUrl';
 
 /*
   Shows a project's whole image at its real proportions, as large as will fit.
@@ -28,7 +29,7 @@ export default function FitFrame({ project, as: Tag = 'div', className = '', sty
       {project.image ? (
         <img
           ref={imgRef}
-          src={project.image}
+          src={assetUrl(project.image)}
           alt=""
           decoding="async"
           onLoad={(e) => setRatio(e.currentTarget.naturalWidth / e.currentTarget.naturalHeight)}
