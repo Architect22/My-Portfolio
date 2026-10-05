@@ -52,5 +52,12 @@ export default {
         { value: 'Playable', label: 'Card-game prototype completed' },
       ],
     },
+    {
+      type: 'text',
+      title: 'Links',
+      body: [
+        '- [Rulesheet](https://docs.google.com/document/d/1_b8jVcpokbVyF9HljSbf1HGmvLDl24Lwb4v0XlcAIXw/edit?tab=t.0#heading=h.fzfvv1lq517x)',
+      ],
+    },
   ],
 };

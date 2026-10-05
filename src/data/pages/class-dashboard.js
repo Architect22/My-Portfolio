@@ -100,7 +100,7 @@ export default {
       type: 'stats',
       title: 'Results',
       items: [
-        { value: 'In use', label: 'Dashboard used by the class' },
+        { value: '400+ Students', label: 'Dashboard is currently in use by over 400 students and 15 TA\'s in the class' },
         { value: 'Full marks', label: 'Final project evaluation' },
       ],
     },
