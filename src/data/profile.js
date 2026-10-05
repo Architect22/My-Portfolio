@@ -8,7 +8,7 @@ export const PROFILE = {
   facts: [
     ['Education', 'B.S. Computer Science, Iowa State University, 2026'],
     ['Studio', 'Founder of Boku Studios'],
-    ['Works in', 'React, TypeScript, JavaScript, Java, Python, C#, Unity, SQL'],
+    ['Works in', 'React, TypeScript, JavaScript, Java, Python, C#, Unity, SQL, Figma, Git, and much more'],
   ],
   email: 'bentombrown@gmail.com',
   linksHref: 'https://linktr.ee/bentombrown',
