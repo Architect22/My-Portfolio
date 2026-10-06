@@ -24,7 +24,7 @@ function Avatar({ size }) {
     >
       <img
         className="h-full w-full rounded-full object-cover"
-        src={assetUrl('/images/portfolio%20picture.jpg')}
+        src={assetUrl('/images/portfolio%20picture.jpeg')}
         alt="Benjamin"
         style={{ objectPosition: 'center 34%' }}
       />
