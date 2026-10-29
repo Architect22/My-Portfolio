@@ -8,7 +8,8 @@ export const P = {
   home: 0,
   about: 1,
   first: 2, // first project case study
-  contact: 2 + PROJECTS.length,
+  process: 2 + PROJECTS.length,
+  contact: 3 + PROJECTS.length,
 };
 
 export const TOTAL_PANELS = P.contact + 1;

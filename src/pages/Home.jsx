@@ -10,6 +10,7 @@ import ProjectStrip from '../components/layout/ProjectStrip';
 import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import CaseStudy from '../components/sections/CaseStudy';
+import DesignProcess from '../components/sections/DesignProcess';
 import Contact from '../components/sections/Contact';
 
 function WalkAnimation({ direction, isScrolling }) {
@@ -50,7 +51,7 @@ function WalkAnimation({ direction, isScrolling }) {
 /*
   The horizontal-scrolling home page.
   Panel order here must match src/constants/panels.js:
-  Hero, About, one CaseStudy per project, Contact.
+  Hero, About, one CaseStudy per project, DesignProcess, Contact.
 */
 export default function Home() {
   const { scrollerRef, active, goTo, scrollDirection, isScrolling } = useHorizontalScroll();
@@ -66,6 +67,7 @@ export default function Home() {
         {PROJECTS.map((project) => (
           <CaseStudy key={project.id} project={project} />
         ))}
+        <DesignProcess goTo={goTo} />
         <Contact goTo={goTo} />
       </main>
 

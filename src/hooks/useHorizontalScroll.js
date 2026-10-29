@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { TOTAL_PANELS } from '../constants/panels';
 
-const STORAGE_KEY = 'portfolio:panel:v2';
+const STORAGE_KEY = 'portfolio:panel:v3';
 
 /*
   Turns vertical wheel / trackpad scrolling into smooth horizontal travel
