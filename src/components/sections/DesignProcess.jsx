@@ -5,19 +5,19 @@ const STEPS = [
     number: '01',
     title: 'Understand the goal',
     description:
-      'I start with the people, problem, and purpose behind the project. Clear goals and constraints help the team focus on what matters. I then parse out what it really is that the client wants so we both have a clear picture of the project',
+      'I start with the people, problem, and purpose behind the project. Clear goals and constraints help the team focus on what matters. I then parse out what it really is that the client wants so we both have a clear picture of the project.',
   },
   {
     number: '02',
     title: 'Explore the possibilities',
     description:
-      'I research the space, sketch ideas, and compare approaches before settling on a direction. The best solution is not always the first one. Feedback is very important during this phase, so I communicate ideas often',
+      'I research the space, sketch ideas, and compare approaches before settling on a direction. The best solution is not always the first one. Feedback is very important during this phase, so I communicate ideas often.',
   },
   {
     number: '03',
     title: 'Shape the experience',
     description:
-      'I map the important flows and prototype the key interactions so we can see how the experience feels before investing in a full build. Changes are best addressed early on in the project lifecycle',
+      'I map the important flows and prototype the key interactions so we can see how the experience feels before investing in a full build. Changes are best addressed early on in the project lifecycle.',
   },
   {
     number: '04',
